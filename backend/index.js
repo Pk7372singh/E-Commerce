@@ -7,7 +7,7 @@ const multer = require("multer");
 const path = require("path");
 const cors = require("cors");
 const { type } = require("os");
-const { log } = require("console");
+const { log, error } = require("console");
 
 app.use(express.json());
 app.use(cors());
@@ -156,12 +156,10 @@ const Users = mongoose.model("Users", {
 app.post("/signup", async (req, res) => {
   let check = await Users.findOne({ email: req.body.email });
   if (check) {
-    return res
-      .status(400)
-      .json({
-        success: false,
-        errors: "existing user found with same email id",
-      });
+    return res.status(400).json({
+      success: false,
+      errors: "existing user found with same email id",
+    });
   }
   let cart = {};
   for (let i = 0; i < 300; i++) {
@@ -182,9 +180,39 @@ app.post("/signup", async (req, res) => {
     },
   };
 
-  const token = jwt.sign(data, "secret-ecom");
+  const token = jwt.sign(data, "secret_ecom");
   res.json({ success: true, token });
 });
+
+//Creating endpoint for user login
+
+app.post("/login", async (req, res) => {
+  let user = await Users.findOne({ email: req.body.email });
+  if (user) {
+    const passCompare = req.body.password === user.password;
+    if (passCompare) {
+      const data = {
+        user: {
+          id: user.id,
+        },
+      };
+      const token = jwt.sign(data, "secret_ecom");
+      res.json({ success: true, token });
+    } else {
+      res.json({ success: false, errors: "Wrong Password" });
+    }
+  } else {
+    res.json({ success: false, errors: "wrong email id" });
+  }
+});
+
+// creating endpoint for newCollection data
+app.get('/newcollection',async(req,res)=>{
+  let products=await Product.find({});
+  let newcollection =products.slice(1).slice(-8);
+  console.log("NewCollection Fetched");
+  res.send(newcollection);
+})
 
 app.listen(port, (error) => {
   if (!error) {
