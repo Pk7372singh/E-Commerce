@@ -30,6 +30,11 @@ Dev dependencies for development and linting include:
 - **eslint-plugin-react-refresh:** ^0.4.5
 - **vite:** ^5.0.8
 
+- ![Screenshot 2024-01-30 143446](https://github.com/Pk7372singh/E-Commerce/assets/92020279/7025784d-b42c-4b75-b24c-0496c6a77b17)
+- ![Screenshot 2024-01-30 143522](https://github.com/Pk7372singh/E-Commerce/assets/92020279/aad1411e-3915-419b-bb89-f8414d350c4b)
+
+
+
 ## Backend
 
 The backend of the Shop E-Commerce Website is powered by Node.js and Express.js, with MongoDB serving as the database. Key dependencies include:
@@ -44,6 +49,9 @@ The backend of the Shop E-Commerce Website is powered by Node.js and Express.js,
 ## Admin
 
 The admin section of the project is designed to handle administrative tasks. It is a separate module with its own dependencies. Please refer to the `admin` directory for specific details.
+![Screenshot 2024-01-30 143310](https://github.com/Pk7372singh/E-Commerce/assets/92020279/bdab693a-dd2f-478a-860c-4722aa5a0d34)
+
+![Screenshot 2024-01-30 143401](https://github.com/Pk7372singh/E-Commerce/assets/92020279/f801aafb-1994-44d6-b511-768399cc3815)
 
 ## Getting Started
 
